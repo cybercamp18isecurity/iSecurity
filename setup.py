@@ -10,16 +10,16 @@ from glob import glob
 
 REQUIREMENTS = [str(ir.req) for ir in parse_requirements(
     'requirements.txt',  session=False)]
-REQUIREMENTS_TEST = [str(ir.req) for ir in parse_requirements(
-    'requirements-test.txt',  session=False)]
+#REQUIREMENTS_TEST = [str(ir.req) for ir in parse_requirements(
+#    'requirements-test.txt',  session=False)]
 
 setup(
-    name='iSecurityWebApp',
+    name='iSecurityWebServer',
     version='0.1',
     description='Webserver de iSecurity',
 
     author='Javier Gutiérrez, Lucas Fernandez',
-    author_email='nexus.megavexus@gmail.com, ...',
+    author_email='nexus.megavexus@gmail.com',
 
     install_requires=REQUIREMENTS,
 

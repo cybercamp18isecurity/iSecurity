@@ -1,2 +1,4 @@
 Flask>=1.0.2
--e git+https://github.com/cybercamp18isecurity/elasticsearch_sdk.git#egg=elasticsearch_sdk
+-e git://github.com/cybercamp18isecurity/elasticsearch_sdk.git#egg=elasticsearch_sdk-0.3
+-e git://github.com/cybercamp18isecurity/data_model_controller.git#egg=data_model-0.1
+Flask-jwt
