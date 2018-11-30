@@ -1,0 +1,2 @@
+Flask>=1.0.2
+-e git+ssh://git@github.com/cybercamp18isecurity/elasticsearch_sdk.git@develop#egg=elasticsearch_sdk
