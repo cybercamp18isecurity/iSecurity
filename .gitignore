@@ -1,2 +1,4 @@
 *configuration.ini
 *.pyc
+*.egg-info
+*__pycache__*
