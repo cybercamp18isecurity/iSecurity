@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  isec_webserver:
+    container_name: isec_webserver
+    hostname: isec_webserver
+    build:
+      context: .
+    ports:
+      - 5000:5000
+    volumes:
+      - ./src:/opt/iSecurityWebServer/src
+      - ./setup.py:/opt/iSecurityWebServer/setup.py
+      - ./requirements.txt:/opt/iSecurityWebServer/requirements.txt
