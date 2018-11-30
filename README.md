@@ -4,6 +4,8 @@ Backend de iSecurity que contiene los diversos Endpoints de la aplicación, que 
 
 ### Instalación
 
+# TODO: DOCKER
+
 ### Configuración
 
 Para configurarlo, sólamente tenemos que fijar las credenciales de la instancia de Elasticsearch que usemos en el archivo de `src/configuration.ini`.
