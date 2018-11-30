@@ -1,2 +1,2 @@
 Flask>=1.0.2
--e git+ssh://git@github.com/cybercamp18isecurity/elasticsearch_sdk.git@develop#egg=elasticsearch_sdk
+-e git+https://github.com/cybercamp18isecurity/elasticsearch_sdk.git#egg=elasticsearch_sdk
