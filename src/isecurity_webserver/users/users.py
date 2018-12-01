@@ -1,35 +1,58 @@
+from ..data_model import get_data_model
 
 class Users(object):
+    def __init__(self):
+        self.data_model = get_data_model()
 
     def get_list_users(self):
-        users = [{
-            "name": "Santi Hernandez",
-            "email": "santi6minutos@iSecurity.com",
-            "position": "Serucity Resarcher",
-            "department": "Innovation",
-            "device": "HP Pavilion",
-            "image_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/santiago_foto.png?alt=media&token=3221114e-3fc2-4109-bd1a-42cd489029ef",
-            "status": 1,
-            "is_deleted": False
-        },
-        {
-            "name": "Lucas Fernandez",
-            "email": "lucasfer@iSecurity.com",
-            "position": "Developer",
-            "department": "Development",
-            "device": "Macbook Pro 15",
-            "image_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/Avatar%20Background.png?alt=media&token=316d1cf5-2f34-4ec5-87d8-304e686bdf36",
-            "status": 1,
-            "is_deleted": False,
-            "events": []
-        },
-        {
-            "name": "Javi Gutierrez",
-            "email": "javiguz@iSecurity.com",
-            "position": "Sys Admin",
-            "department": "Development",
-            "image_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/javi.png?alt=media&token=b51e634e-c08a-417d-b1de-0f586960b21c",
-            "status": 1,
-            "is_deleted": False
-        }]
-        return users
+        query = {
+            "sort": [
+                { "status": { "order": "desc" }},
+                { "@datetime": { "order": "desc" }}
+            ]
+        }
+        res = self.data_model.users.query(query)
+        return res
+
+
+    def get_user_details(self, id_user):
+        """
+        Devuelve los detalles de un usuario, así como:
+            - Sus alertas relacionadas
+            - Sus dispositivos relacionados
+        """
+        user_res = self.data_model.users.get(id_user)
+        user_data = user_res['_source']
+        user_data['_id'] = user_res['_id']
+
+        try:
+            user_data["devices"] = self.data_model.devices.search("owner", id_user)
+        except:
+            user_data["devices"] = None
+
+        try:
+            user_data["alerts"] = self.data_model.alerts.search("id_user", id_user)
+            user_data["related_alerts"] = self.get_related_events(user_data["alerts"])
+        except:
+            user_data["alerts"] = None
+
+        return user_data
+
+
+    def get_related_events(self, alerts):
+        alerts_active = []
+        alerts_working = []
+        alerts_finished = []
+
+        for alert in alerts:
+            if alert['status'] == 0:
+                alerts_active.append(alert)
+            elif alerts['working'] == 1:
+                alerts_working.append(alert)
+            elif alerts['finished'] == 1:
+                alerts_finished.append(alert)
+        return {
+            "alerts_active":alerts_active,
+            "alerts_working":alerts_working,
+            "alerts_finished": alerts_finished
+        }

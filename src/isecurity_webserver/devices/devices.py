@@ -11,7 +11,7 @@ class Devices(object):
         query = {
             "sort": [
                 { "status": { "order": "desc" }},
-                { "@timestamp": { "order": "desc" }}
+                { "@datetime": { "order": "desc" }}
             ],
             "size": 100
         }
