@@ -1,0 +1,4 @@
+PUT /isecurity_datamodel-test/_doc/1
+{
+    "soy_test":"soy_test"
+}
