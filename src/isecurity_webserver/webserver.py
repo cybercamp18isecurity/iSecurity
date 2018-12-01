@@ -1,9 +1,9 @@
-import flask
 import os
 import time
 myPath = os.path.dirname(os.path.abspath(__file__))
 
-from flask import jsonify
+import flask
+from flask import jsonify, request
 
 from isecurity_webserver.devices import Devices
 from isecurity_webserver.users import Users
@@ -16,14 +16,18 @@ def menu():
 
 @app.route('/devices', methods = ['GET'])
 def getDevices():
+    max_count = request.args.get('number')
+
     devices = Devices()
-    devices_data = devices.get_list_devices()
+    devices_data = devices.get_list_devices(max_count)
     return jsonify(devices_data)
 
 @app.route('/users', methods = ['GET'])
 def getUsers():
+    max_count = request.args.get('number')
+
     users_endpoint = Users()
-    users_data = users_endpoint.get_list_users()
+    users_data = users_endpoint.get_list_users(max_count)
     return jsonify(users_data)
 
 @app.route('/alerts', methods = ['GET'])
