@@ -3,7 +3,7 @@ PUT /isecurity_datamodel-domains
     "mappings": {
         "doc": {
             "properties": {
-                "@timestamp": {
+                "@datetime": {
                     "type": "date"
                 },
                 "url": {

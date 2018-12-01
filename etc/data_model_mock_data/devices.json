@@ -1,6 +1,6 @@
 PUT /isecurity_datamodel-devices/doc/1
 {
-    "@timestamp": "2018-11-15T14:12:12",
+    "@datetime": "2018-11-15T14:12:12",
     "hostname": "Dell XPS 15",
     "owner": "2",
     "avatar_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/hpspectre.jpg?alt=media&token=2d09092c-7c2d-43ec-bd79-0596b1596b9f",
@@ -9,7 +9,7 @@ PUT /isecurity_datamodel-devices/doc/1
 
 PUT /isecurity_datamodel-devices/doc/2
 {
-    "@timestamp": "2018-09-15T14:12:12",
+    "@datetime": "2018-09-15T14:12:12",
     "hostname": "HP Pavilion",
     "owner": "2",
     "avatar_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/hppavilion.png?alt=media&token=4c3940cb-d5d5-47d4-a863-c3c366f3b36a",
@@ -18,7 +18,7 @@ PUT /isecurity_datamodel-devices/doc/2
 
 PUT /isecurity_datamodel-devices/doc/3
 {
-    "@timestamp": "2018-01-15T14:12:12",
+    "@datetime": "2018-01-15T14:12:12",
     "hostname": "Macbook Pro 15",
     "owner": "3",
     "avatar_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/macbookpro.jpg?alt=media&token=6c04c132-933a-449c-94a9-945eec97fe04",
@@ -27,7 +27,7 @@ PUT /isecurity_datamodel-devices/doc/3
 
 PUT /isecurity_datamodel-devices/doc/4
 {
-    "@timestamp": "2018-02-15T14:12:12",
+    "@datetime": "2018-02-15T14:12:12",
     "hostname": "Dell OTRO",
     "owner": "4",
     "avatar_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/hpspectre.jpg?alt=media&token=2d09092c-7c2d-43ec-bd79-0596b1596b9f",
@@ -35,7 +35,7 @@ PUT /isecurity_datamodel-devices/doc/4
 }
 
 PUT /isecurity_datamodel-devices/doc/5 {
-    "@timestamp": "2018-02-15T14:12:12",
+    "@datetime": "2018-02-15T14:12:12",
     "hostname": "WIN-BPGE5FV4KJ1",
     "owner": "1",
     "avatar_url": "",

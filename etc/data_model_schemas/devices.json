@@ -3,7 +3,7 @@ PUT /isecurity_datamodel-devices
     "mappings": {
         "doc": {
             "properties": {
-                "@timestamp": {
+                "@datetime": {
                     "type": "date"
                 },
                 "hostname": {
