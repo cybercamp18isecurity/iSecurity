@@ -31,9 +31,9 @@ class Users(object):
         user_data['_id'] = user_res['_id']
 
         try:
-            user_data["devices"] = self.data_model.devices.search("hostname", user_data['device'])
+            user_data["devices_data"] = self.data_model.devices.search("hostname", user_data['device'])
         except:
-            user_data["devices"] = None
+            user_data["devices_data"] = None
 
         try:
             user_data["alerts"] = self.data_model.alerts.search("id_user", id_user)

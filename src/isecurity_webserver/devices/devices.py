@@ -38,9 +38,9 @@ class Devices(object):
 
         user_id = device['owner']
         try:
-            device['owner'] = self.data_model.users.get(user_id)
+            device['owner_data'] = self.data_model.users.get(user_id)
         except:
-            pass
+            device['owner_data'] = None
 
         return device
 
