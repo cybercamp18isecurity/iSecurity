@@ -24,7 +24,7 @@ The system architecture is shown below.
 - Back End (Esqueleto): https://github.com/cybercamp18isecurity/iSecurity
 - Modelo de datos y controlador: (Ahora forma parte del Backend)
 - Elasticsearch sdk: https://github.com/cybercamp18isecurity/elasticsearch_sdk
-- configuración y queries de OSQUERY: https://github.com/cybercamp18isecurity/osquery_conf_linux
+- configuración y queries de OSQUERY: Ahora forma parte del Back End
 - iSecurity Detector: https://github.com/cybercamp18isecurity/iSecurityDetection
 
 

@@ -1,0 +1,44 @@
+PUT /isecurity_datamodel-users
+{
+    "mappings": {
+        "doc": {
+            "properties": {
+                "@datetime": {
+                    "type": "date"
+                },
+                "name": {
+                    "type": "text"
+                },
+                "email": {
+                    "type": "keyword"
+                },
+                "position": {
+                    "type": "text"
+                },
+                "department": {
+                    "type": "text"
+                },
+                "image_url": {
+                    "type": "text"
+                },
+                "status": {
+                    "type": "integer",
+                    "null_value": 0
+                },
+                "is_deleted": {
+                    "type": "boolean",
+                    "null_value": false
+                },
+                "events": {
+                    "type": "nested"
+                },
+                "host_users": {
+                    "type": "nested"
+                },
+                "devices": {
+                    "type": "keyword"
+                }
+            }
+        }
+    }
+}

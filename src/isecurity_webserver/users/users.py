@@ -4,15 +4,21 @@ class Users(object):
     def __init__(self):
         self.data_model = get_data_model()
 
-    def get_list_users(self):
+    def get_list_users(self, max_count=None):
         query = {
             "sort": [
                 { "status": { "order": "desc" }},
                 { "@datetime": { "order": "desc" }}
             ]
         }
+        if max_count != None:
+            max_count = int(max_count)
+            query["size"] = max_count
+            query['from'] = 0
+
         res = self.data_model.users.query(query)
-        return res
+        transformed_res = self.data_model.transform_query_to_response(res)
+        return transformed_res
 
 
     def get_user_details(self, id_user):
@@ -26,9 +32,9 @@ class Users(object):
         user_data['_id'] = user_res['_id']
 
         try:
-            user_data["devices"] = self.data_model.devices.search("owner", id_user)
+            user_data["devices_data"] = self.data_model.devices.search("hostname", user_data['device'])
         except:
-            user_data["devices"] = None
+            user_data["devices_data"] = None
 
         try:
             user_data["alerts"] = self.data_model.alerts.search("id_user", id_user)
@@ -56,3 +62,7 @@ class Users(object):
             "alerts_working":alerts_working,
             "alerts_finished": alerts_finished
         }
+
+    def update_user_status(self, id_user, status):
+        res = self.data_model.users.update(id_user, {"status": int(status)})
+        return str(res) == str(id_user)
