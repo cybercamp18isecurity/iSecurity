@@ -5,8 +5,8 @@ myPath = os.path.dirname(os.path.abspath(__file__))
 
 from flask import jsonify
 
-from .devices import Devices
-from .users import Users
+from isecurity_webserver.devices import Devices
+from isecurity_webserver.users import Users
 
 app = flask.Flask(__name__)
 
@@ -22,7 +22,9 @@ def getDevices():
 
 @app.route('/users', methods = ['GET'])
 def getUsers():
-    return jsonify(Users.get_list_users())
+    users_endpoint = Users()
+    users_data = users_endpoint.get_list_users()
+    return jsonify(users_data)
 
 @app.route('/alerts', methods = ['GET'])
 def getAlerts():
@@ -61,9 +63,6 @@ def getDomains():
 def getSummary():
     return jsonify()
 
-from .devices.devices import device_pages
-
-app.register_blueprint(device_pages)
 
 if __name__ == '__main__':
     app.run(host = "0.0.0.0", debug = True)
