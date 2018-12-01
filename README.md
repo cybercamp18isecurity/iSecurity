@@ -21,9 +21,9 @@ The system architecture is shown below.
 
 ## Repositorios:
 - Front End (Asistente): https://github.com/cybercamp18isecurity/iSecurityAssistant
-- Back End (Esqueleto): https://github.com/cybercamp18isecurity/iSecurityWebService
+- Back End (Esqueleto): https://github.com/cybercamp18isecurity/iSecurity
+- Modelo de datos y controlador: (Ahora forma parte del Backend)
 - Elasticsearch sdk: https://github.com/cybercamp18isecurity/elasticsearch_sdk
-- Modelo de datos y controlador: https://github.com/cybercamp18isecurity/data_model_controller
 - configuración y queries de OSQUERY: https://github.com/cybercamp18isecurity/osquery_conf_linux
 - iSecurity Detector: https://github.com/cybercamp18isecurity/iSecurityDetection
 
@@ -50,3 +50,21 @@ password = password
 ```
 
 Se incluye un ejemplo en `src/configuration.example.ini`
+
+### Testing
+
+Para testear, se ha usado la tecnología `pytest` que permite testear de forma fácil, cómoda y para toda la familia.
+
+Para ello, nos debemos descargar las dependencias de testing y luego instalar el paquete de isecurity con pip:
+
+```bash
+pip3 install -r requirements.txt
+pip3 install -r requirements-test.txt
+pip3 install -e .
+```
+
+Tras esto, podemos usar pytest para probar tanto el modelo de datos como la aplicación:
+
+```bash
+python3 -m pytest tests
+```
