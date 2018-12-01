@@ -9,6 +9,4 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - ./src:/opt/iSecurityWebServer/src
-      - ./setup.py:/opt/iSecurityWebServer/setup.py
-      - ./requirements.txt:/opt/iSecurityWebServer/requirements.txt
+      - ./src:/opt/isecurity_webserver/src
