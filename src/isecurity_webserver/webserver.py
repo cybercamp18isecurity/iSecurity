@@ -1,29 +1,59 @@
-import flask
 import os
 import time
 myPath = os.path.dirname(os.path.abspath(__file__))
 
-from flask import jsonify
+import flask
+from flask import jsonify, request
 
-from .devices import Devices
-from .users import Users
+from isecurity_webserver.devices import Devices
+from isecurity_webserver.users import Users
 
 app = flask.Flask(__name__)
 
 @app.route('/', methods = ['GET'])
 def menu():
-    pass
+    return None
 
+### DEVICES ###
 @app.route('/devices', methods = ['GET'])
-def getDevices():
+def get_devices():
+    max_count = request.args.get('number')
+
     devices = Devices()
-    devices_data = devices.get_list_devices()
+    devices_data = devices.get_list_devices(max_count)
     return jsonify(devices_data)
 
-@app.route('/users', methods = ['GET'])
-def getUsers():
-    return jsonify(Users.get_list_users())
+@app.route('/devices/<id_device>', methods = ['GET'])
+def get_info_device(id_device):
 
+    devices = Devices()
+    device_data = devices.get_details_device(id_device)
+    return jsonify(device_data)
+
+### USERS ###
+@app.route('/users', methods = ['GET'])
+def get_users():
+    max_count = request.args.get('number')
+
+    users_endpoint = Users()
+    users_data = users_endpoint.get_list_users(max_count)
+    return jsonify(users_data)
+
+@app.route('/users/<id_user>', methods = ['GET'])
+def get_info_user(id_user):
+    user_endpoint = Users()
+    user_data = user_endpoint.get_user_details(id_user)
+    return jsonify(user_data)
+
+@app.route('/users/<id_user>/update', methods = ['POST'])
+def update_status_user(id_user):
+    max_count = request.args.get('status')
+    user_endpoint = Users()
+    ok = user_endpoint.update_user_status(id_user, status)
+    return jsonify({"status": ok})
+
+
+### Alertas
 @app.route('/alerts', methods = ['GET'])
 def getAlerts():
     return jsonify([{
@@ -61,9 +91,6 @@ def getDomains():
 def getSummary():
     return jsonify()
 
-from .devices.devices import device_pages
-
-app.register_blueprint(device_pages)
 
 if __name__ == '__main__':
     app.run(host = "0.0.0.0", debug = True)

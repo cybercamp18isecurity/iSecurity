@@ -1,0 +1,29 @@
+PUT /isecurity_datamodel-test
+{
+    "mappings": {
+        "doc": {
+            "properties": {
+                "@datetime": {
+                    "type": "date"
+                },
+                "id_external": {
+                    "type": "keyword"
+                },
+                "id_user": {
+                    "type": "keyword"
+                },
+                "type": {
+                    "type": "keyword"
+                },
+                "status": {
+                    "type": "integer",
+                    "null_value": 0
+                },
+                "criticity": {
+                    "type": "integer",
+                    "null_value": 0
+                }
+            }
+        }
+    }
+}

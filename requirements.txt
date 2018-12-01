@@ -1,5 +1,4 @@
 elasticsearch==6.3.1
--e git+https://github.com/cybercamp18isecurity/elasticsearch_sdk.git@3ee39c4cf08f30f30efa9d51a619146d05bc1aee#egg=elasticsearch_sdk
+git+https://github.com/cybercamp18isecurity/elasticsearch_sdk.git@3ee39c4cf08f30f30efa9d51a619146d05bc1aee#egg=elasticsearch_sdk
 Flask==1.0.2
 Flask-JWT==0.3.2
--e git+https://github.com/cybercamp18isecurity/data_model_controller.git@bcd6919119c9e6b70f50020d7c5feea1885f8d0e#egg=data_model

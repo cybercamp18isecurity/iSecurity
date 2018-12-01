@@ -1,0 +1,49 @@
+PUT /isecurity_datamodel-users/doc/1
+{
+    "name": "Javi Gutierrez",
+    "email": "javiguz@iSecurity.com",
+    "position": "Sys Admin",
+    "department": "Development",
+    "device": "1",
+    "image_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/javi.png?alt=media&token=b51e634e-c08a-417d-b1de-0f586960b21c",
+    "status": 1,
+    "is_deleted": false
+}
+
+PUT /isecurity_datamodel-users/doc/2
+{
+    "name": "Santi Hernandez",
+    "email": "santi6minutos@iSecurity.com",
+    "position": "Serucity Resarcher",
+    "department": "Innovation",
+    "device": "2",
+    "image_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/santiago_foto.png?alt=media&token=3221114e-3fc2-4109-bd1a-42cd489029ef",
+    "status": 1,
+    "is_deleted": false
+}
+
+PUT /isecurity_datamodel-users/doc/3
+{
+    "name": "Lucas Fernandez",
+    "email": "lucasfer@iSecurity.com",
+    "position": "Developer",
+    "department": "Development",
+    "device": "3",
+    "image_url": "https://firebasestorage.googleapis.com/v0/b/isecurity-176d0.appspot.com/o/Avatar%20Background.png?alt=media&token=316d1cf5-2f34-4ec5-87d8-304e686bdf36",
+    "status": 1,
+    "is_deleted": false,
+    "events": []
+}
+
+PUT /isecurity_datamodel-users/doc/4
+{
+    "name": "Luis Rodriguez",
+    "email": "luis.rodriguez@iSecurity.com",
+    "position": "Becario",
+    "department": "Contabilidad",
+    "device": "3",
+    "image_url": "",
+    "status": 1,
+    "is_deleted": false,
+    "events": []
+}
