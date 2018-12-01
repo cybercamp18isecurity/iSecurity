@@ -8,7 +8,7 @@ from flask import jsonify, request
 from isecurity_webserver.devices import Devices
 from isecurity_webserver.users import Users
 from isecurity_webserver.alerts import Alerts
-
+from isecurity_webserver.summary import get_summary
 app = flask.Flask(__name__)
 
 @app.route('/', methods = ['GET'])
@@ -95,10 +95,12 @@ def getDomains():
         "events": []
     }])
 
-
+### SUMMARY ###
 @app.route('/summary', methods = ['GET'])
-def getSummary():
-    return jsonify()
+def get_summary_data():
+    scope = request.args.get('scope', "")
+    results = get_summary(scope)
+    return jsonify(results)
 
 
 if __name__ == '__main__':
