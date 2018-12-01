@@ -22,7 +22,8 @@ class Devices(object):
             query['from'] = 0
 
         res = self.data_model.devices.query(query)
-        return res
+        transformed_res = self.data_model.transform_query_to_response(res)
+        return transformed_res
 
     def get_details_device(self, id_device):
         """
@@ -38,9 +39,9 @@ class Devices(object):
 
         user_id = device['owner']
         try:
-            device['owner'] = self.data_model.users.get(user_id)
+            device['owner_data'] = self.data_model.users.get(user_id)
         except:
-            pass
+            device['owner_data'] = None
 
         return device
 

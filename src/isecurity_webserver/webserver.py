@@ -7,7 +7,8 @@ from flask import jsonify, request
 
 from isecurity_webserver.devices import Devices
 from isecurity_webserver.users import Users
-
+from isecurity_webserver.alerts import Alerts
+from isecurity_webserver.summary import get_summary
 app = flask.Flask(__name__)
 
 @app.route('/', methods = ['GET'])
@@ -47,7 +48,7 @@ def get_info_user(id_user):
 
 @app.route('/users/<id_user>/update', methods = ['POST'])
 def update_status_user(id_user):
-    max_count = request.args.get('status')
+    status = request.args.get('status')
     user_endpoint = Users()
     ok = user_endpoint.update_user_status(id_user, status)
     return jsonify({"status": ok})
@@ -55,18 +56,26 @@ def update_status_user(id_user):
 
 ### Alertas
 @app.route('/alerts', methods = ['GET'])
-def getAlerts():
-    return jsonify([{
-        "date": time.time(),
-        "id_external": "fasf234asdfasdf",
-        "id_user": "fasdf23asdf",
-        "type": "Manipulación de red",
-        "status": 1,
-        "criticity": 6,
-        "description": "Manipulación de paquetes desde la red interna....",
-        "is_deleted": False,
-        "events": []
-    }])
+def get_alerts():
+    max_count = request.args.get('number')
+    alert_endpoint = Alerts()
+    alerts_data = alert_endpoint.get_list_alerts(max_count)
+    return jsonify(alerts_data)
+
+@app.route('/alerts/<id_alert>', methods = ['GET'])
+def get_info_alert(id_alert):
+    alert_endpoint = Alerts()
+    alert_data = alert_endpoint.get_alert_details(id_alert)
+    return jsonify(alert_data)
+
+@app.route('/alerts/<id_alert>/update', methods = ['POST', 'GET'])
+def update_status_alert(id_alert):
+    status = request.args.get('status')
+
+    alert_endpoint = Alerts()
+    ok = alert_endpoint.update_alert_status(id_alert, status)
+    return jsonify({"status": ok})
+
 
 @app.route('/domains', methods = ['GET'])
 def getDomains():
@@ -86,10 +95,12 @@ def getDomains():
         "events": []
     }])
 
-
+### SUMMARY ###
 @app.route('/summary', methods = ['GET'])
-def getSummary():
-    return jsonify()
+def get_summary_data():
+    scope = request.args.get('scope', "")
+    results = get_summary(scope)
+    return jsonify(results)
 
 
 if __name__ == '__main__':
