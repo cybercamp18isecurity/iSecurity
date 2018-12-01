@@ -31,7 +31,7 @@ class Users(object):
         user_data['_id'] = user_res['_id']
 
         try:
-            user_data["devices"] = self.data_model.devices.search("owner", id_user)
+            user_data["devices"] = self.data_model.devices.search("hostname", user_data['device'])
         except:
             user_data["devices"] = None
 
@@ -63,5 +63,5 @@ class Users(object):
         }
 
     def update_user_status(self, id_user, status):
-        res = self.data_model.users.update(id_user, {"status": status})
+        res = self.data_model.users.update(id_user, {"status": int(status)})
         return str(res) == str(id_user)
