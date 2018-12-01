@@ -5,3 +5,4 @@
 src/elasticsearch-sdk/*
 venv/
 .venv
+.tox
