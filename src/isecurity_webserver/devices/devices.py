@@ -4,7 +4,7 @@ class Devices(object):
     def __init__(self):
         self.data_model = get_data_model()
 
-    def get_list_devices(self):
+    def get_list_devices(self, max_count=None):
         """
         Devuelve un listado de dispositivos, ordenados por estado y fecha.
         """
@@ -15,6 +15,12 @@ class Devices(object):
             ],
             "size": 100
         }
+
+        if max_count != None:
+            max_count = int(max_count)
+            query["size"] = max_count
+            query['from'] = 0
+
         res = self.data_model.devices.query(query)
         return res
 
