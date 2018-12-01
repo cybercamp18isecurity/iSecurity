@@ -29,6 +29,7 @@ class Alerts(object):
         alert_res = self.data_model.alerts.get(id_alert)
         alert_data = alert_res['_source']
         alert_data['_id'] = alert_res['_id']
+        alert_data = self.data_model.clean_dict_data(alert_data)
 
         try:
             alert_data["devices"] = self.data_model.devices.search("hostname", alert_data['id_external'])

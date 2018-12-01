@@ -17,7 +17,15 @@ class Model(object):
         response = []
         for element in data:
             data_elem = element['_source']
-            data_elem["timestamp"] = data_elem.get('@datetime')
+            data_elem = self.clean_dict_data(data_elem)
             data_elem["_id"] = element['_id']
             response.append(data_elem)
         return response
+
+    def clean_dict_data(self, data):
+        try:
+            data["timestamp"] = data.get('@datetime')
+            del data["@datetime"]
+        except:
+            pass
+        return data

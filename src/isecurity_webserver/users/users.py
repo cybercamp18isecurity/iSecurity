@@ -30,6 +30,7 @@ class Users(object):
         user_res = self.data_model.users.get(id_user)
         user_data = user_res['_source']
         user_data['_id'] = user_res['_id']
+        user_data = self.data_model.clean_dict_data(user_data)
 
         try:
             user_data["devices_data"] = self.data_model.devices.search("hostname", user_data['device'])

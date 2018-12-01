@@ -32,7 +32,8 @@ class Devices(object):
         device_data = self.data_model.devices.get(id_device)
 
         device = device_data['_source']
-        device['id'] = device_data["_id"]
+        device['_id'] = device_data["_id"]
+        device = self.data_model.clean_dict_data(device)
 
         device["alerts"] = self.data_model.alerts.search("id_external", id_device)
         device["related_alerts"] = self.get_related_events(device["alerts"], device["hostname"])
