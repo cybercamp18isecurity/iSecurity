@@ -61,3 +61,7 @@ class Users(object):
             "alerts_working":alerts_working,
             "alerts_finished": alerts_finished
         }
+
+    def update_user_status(self, id_user, status):
+        res = self.data_model.users.update(id_user, {"status": status})
+        return str(res) == str(id_user)

@@ -41,11 +41,19 @@ def get_users():
 
 @app.route('/users/<id_user>', methods = ['GET'])
 def get_info_user(id_user):
-
-    user_endpoint = User()
-    user_data = user_endpoint.get_details_user(id_user)
+    user_endpoint = Users()
+    user_data = user_endpoint.get_user_details(id_user)
     return jsonify(user_data)
 
+@app.route('/users/<id_user>/update', methods = ['POST'])
+def update_status_user(id_user):
+    max_count = request.args.get('status')
+    user_endpoint = Users()
+    ok = user_endpoint.update_user_status(id_user, status)
+    return jsonify({"status": ok})
+
+
+### Alertas
 @app.route('/alerts', methods = ['GET'])
 def getAlerts():
     return jsonify([{
