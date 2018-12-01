@@ -14,7 +14,7 @@ REQUIREMENTS = [str(ir.req) for ir in parse_requirements(
 #    'requirements-test.txt',  session=False)]
 
 setup(
-    name='iSecurityWebServer',
+    name='isecurity_webserver',
     version='0.1',
     description='Webserver de iSecurity',
 

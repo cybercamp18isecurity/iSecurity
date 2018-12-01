@@ -1,4 +1,5 @@
-Flask>=1.0.2
--e git://github.com/cybercamp18isecurity/elasticsearch_sdk.git#egg=elasticsearch_sdk-0.3
--e git://github.com/cybercamp18isecurity/data_model_controller.git#egg=data_model-0.1
-Flask-jwt
+elasticsearch==6.3.1
+-e git+https://github.com/cybercamp18isecurity/elasticsearch_sdk.git@3ee39c4cf08f30f30efa9d51a619146d05bc1aee#egg=elasticsearch_sdk
+Flask==1.0.2
+Flask-JWT==0.3.2
+-e git+https://github.com/cybercamp18isecurity/data_model_controller.git@d22c62eb7ea647f339f1c43b18802b18385e16cf#egg=data_model
