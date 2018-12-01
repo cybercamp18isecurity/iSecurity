@@ -12,23 +12,39 @@ app = flask.Flask(__name__)
 
 @app.route('/', methods = ['GET'])
 def menu():
-    pass
+    return None
 
+### DEVICES ###
 @app.route('/devices', methods = ['GET'])
-def getDevices():
+def get_devices():
     max_count = request.args.get('number')
 
     devices = Devices()
     devices_data = devices.get_list_devices(max_count)
     return jsonify(devices_data)
 
+@app.route('/devices/<id_device>', methods = ['GET'])
+def get_info_device(id_device):
+
+    devices = Devices()
+    device_data = devices.get_details_device(id_device)
+    return jsonify(device_data)
+
+### USERS ###
 @app.route('/users', methods = ['GET'])
-def getUsers():
+def get_users():
     max_count = request.args.get('number')
 
     users_endpoint = Users()
     users_data = users_endpoint.get_list_users(max_count)
     return jsonify(users_data)
+
+@app.route('/users/<id_user>', methods = ['GET'])
+def get_info_user(id_user):
+
+    user_endpoint = User()
+    user_data = user_endpoint.get_details_user(id_user)
+    return jsonify(user_data)
 
 @app.route('/alerts', methods = ['GET'])
 def getAlerts():
