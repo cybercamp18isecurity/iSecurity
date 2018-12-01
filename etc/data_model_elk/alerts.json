@@ -1,0 +1,39 @@
+PUT /isecurity_datamodel-alerts
+{
+    "mappings": {
+        "doc": {
+            "properties": {
+                "@datetime": {
+                    "type": "date"
+                },
+                "id_external": {
+                    "type": "keyword"
+                },
+                "id_user": {
+                    "type": "keyword"
+                },
+                "type": {
+                    "type": "keyword"
+                },
+                "status": {
+                    "type": "integer",
+                    "null_value": 0
+                },
+                "criticity": {
+                    "type": "integer",
+                    "null_value": 0
+                },
+                "description": {
+                    "type": "text"
+                },
+                "events": {
+                    "type": "nested"
+                },
+                "is_deleted": {
+                    "type": "boolean",
+                    "null_value": false
+                }
+            }
+        }
+    }
+}

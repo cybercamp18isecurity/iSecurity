@@ -1,0 +1,38 @@
+PUT /isecurity_datamodel-devices
+{
+    "mappings": {
+        "doc": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "hostname": {
+                    "type": "keyword"
+                },
+                "owner": {
+                    "type": "keyword"
+                },
+                "avatar_url": {
+                    "type": "text"
+                },
+                "description": {
+                    "type": "text"
+                },
+                "type": {
+                    "type": "keyword"
+                },
+                "status": {
+                    "type": "integer",
+                    "null_value": 0
+                },
+                "is_deleted": {
+                    "type": "boolean",
+                    "null_value": false
+                },
+                "events": {
+                    "type": "nested"
+                }
+            }
+        }
+    }
+}

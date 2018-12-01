@@ -1,0 +1,50 @@
+PUT /isecurity_datamodel-domains
+{
+    "mappings": {
+        "doc": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "url": {
+                    "type": "keyword"
+                },
+                "ip": {
+                    "type": "ip"
+                },
+                "domain": {
+                    "type": "keyword"
+                },
+                "description": {
+                    "type": "keyword"
+                },
+                "owner": {
+                    "type": "keyword"
+                },
+                "status": {
+                    "type": "integer",
+                    "null_value": 0
+                },
+                "is_deleted": {
+                    "type": "boolean",
+                    "null_value": false
+                },
+                "events": {
+                    "type": "nested"
+                },
+                "img_url": {
+                    "type": "text"
+                },
+                "old_img_url": {
+                    "type": "text"
+                },
+                "htmlcode_url": {
+                    "type": "text"
+                },
+                "old_htmlcode_url": {
+                    "type": "text"
+                }
+            }
+        }
+    }
+}
