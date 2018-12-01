@@ -17,7 +17,8 @@ class Users(object):
             query['from'] = 0
 
         res = self.data_model.users.query(query)
-        return res
+        transformed_res = self.data_model.transform_query_to_response(res)
+        return transformed_res
 
 
     def get_user_details(self, id_user):

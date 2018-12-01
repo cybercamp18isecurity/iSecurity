@@ -22,7 +22,8 @@ class Devices(object):
             query['from'] = 0
 
         res = self.data_model.devices.query(query)
-        return res
+        transformed_res = self.data_model.transform_query_to_response(res)
+        return transformed_res
 
     def get_details_device(self, id_device):
         """
