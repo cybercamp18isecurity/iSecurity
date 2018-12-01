@@ -23,6 +23,6 @@ def get_summary(self, modificator=""):
         "num_users": total_users.get('count',0),
         "num_devices": total_devices.get('count',0),
         "num_alerts": total_alerts.get('count',0),
-        "num_domains": total_alerts.get('count',0)
+        "num_domains": total_domains.get('count',2)
     }
     return result
